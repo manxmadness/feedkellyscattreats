@@ -9,7 +9,10 @@ const board = five.Board();
 
 board.on('ready', function() {
 
-  const led = new five.Led(13); // Set pin 13 for LED
+  var led = new five.Led(13); // Set pin 13 for LED
+  this.repl.inject({
+    led: led
+  });
   var servo = new five.Servo({
     pin: 10,
     startAt: 180
@@ -19,9 +22,11 @@ board.on('ready', function() {
   socket.on('led:on', function(){
     function handler(){
       servo.to(180)
+      led.off()
     }
     servo.on('move:complete', handler);
-    servo.to(0, 500);
+    servo.to(40, 500);
+    led.on()
   });
 
 });
