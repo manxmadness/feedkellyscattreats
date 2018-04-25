@@ -21,7 +21,7 @@ board.on('ready', function() {
       servo.to(180)
     }
     servo.on('move:complete', handler);
-    servo.to(90, 500);
+    servo.to(0, 500);
   });
 
 });
